@@ -14,7 +14,131 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      aircraft: {
+        Row: {
+          created_at: string | null
+          id: string
+          manufacturer: string | null
+          model: string | null
+          serial_number: string | null
+          tail_number: string
+          updated_at: string | null
+          user_id: string
+          year: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          manufacturer?: string | null
+          model?: string | null
+          serial_number?: string | null
+          tail_number: string
+          updated_at?: string | null
+          user_id: string
+          year?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          manufacturer?: string | null
+          model?: string | null
+          serial_number?: string | null
+          tail_number?: string
+          updated_at?: string | null
+          user_id?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
+      maintenance_records: {
+        Row: {
+          aircraft_id: string
+          cost: number | null
+          created_at: string | null
+          date_performed: string
+          description: string
+          hours_recorded: number | null
+          id: string
+          mechanic_license: string | null
+          mechanic_name: string | null
+          parts_replaced: string | null
+          record_type: string
+          status: string | null
+          updated_at: string | null
+          user_id: string
+          work_performed: string | null
+        }
+        Insert: {
+          aircraft_id: string
+          cost?: number | null
+          created_at?: string | null
+          date_performed: string
+          description: string
+          hours_recorded?: number | null
+          id?: string
+          mechanic_license?: string | null
+          mechanic_name?: string | null
+          parts_replaced?: string | null
+          record_type: string
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+          work_performed?: string | null
+        }
+        Update: {
+          aircraft_id?: string
+          cost?: number | null
+          created_at?: string | null
+          date_performed?: string
+          description?: string
+          hours_recorded?: number | null
+          id?: string
+          mechanic_license?: string | null
+          mechanic_name?: string | null
+          parts_replaced?: string | null
+          record_type?: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+          work_performed?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "maintenance_records_aircraft_id_fkey"
+            columns: ["aircraft_id"]
+            isOneToOne: false
+            referencedRelation: "aircraft"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
